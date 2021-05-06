@@ -91,7 +91,7 @@ class Login extends Component {
                                                     Remember Me
                                                 </label>
                                                 <div style={{ color: "honeydew", fontSize: "14px" }} id="signupClick">Don't Have An Account?
-                                                    <Link to="/signUp" > Click To Register</Link>
+                                                    <Link to="/register" > Click To Register</Link>
                                                 </div>
                                             </div>
 

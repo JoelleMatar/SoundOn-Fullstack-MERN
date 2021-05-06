@@ -2,7 +2,7 @@ import React from 'react';
 import Guitar from '../images/guitarSet.jpg';
 import { Link } from 'react-router-dom';
 
-const Product = () => {
+const Product = ({imageUrl, name, price, description, productId}) => {
     return (
         <div>
             <section>
@@ -11,20 +11,20 @@ const Product = () => {
                         <div className="productBox">
                             <div className="productBox-content product-box">
                                 <div className="product-image">
-                                    <img src="https://cdn.mos.cms.futurecdn.net/mLyk54LhkcuvqaLMVULcj7-970-80.jpg.webp" className="productImages" alt="guitar1" />
+                                    <img src={imageUrl} className="productImages" alt={name} />
                                 </div>
                                 <div className="product-desc">
                                     <span className="product-price">
-                                        $200
+                                        ${price}
                                     </span>
                                     <div className="row justify-content-center">
-                                        <p className="product-name"> Gibson</p>
+                                        <p className="product-name">{name}</p>
                                     </div>
                                     <div className="row">
-                                        <p className="product-desc-info">The Squier Bullet Mustang features a slightly smaller scale length which, combined with the basswood body, make it easy to get to grips with. But, importantly, its double humbuckers ensure it can keep up with most grown-up guitars.</p>
+                                        <p className="product-desc-info">{description.substring(0, 110)}...</p>
                                     </div>
                                     <div className="row">
-                                        <Link to={`/product/${1111}`} className="btn btn-outline btn-primary viewDetail">Details <i className="fa fa-long-arrow-right"></i> </Link>
+                                        <Link to={`/product/${productId}`} className="btn btn-outline btn-primary viewDetail">Details <i className="fa fa-long-arrow-right"></i> </Link>
                                     </div>
                                 </div>
                             </div>

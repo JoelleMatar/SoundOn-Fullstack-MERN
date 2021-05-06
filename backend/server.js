@@ -6,6 +6,7 @@ const signin = require("./routes/api/users");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const users = require("./routes/api/users");
+const cors = require("cors");
 
 connectDB();
 
@@ -28,12 +29,13 @@ app.get("/", (req, res) => {
 // Passport middleware
 app.use(passport.initialize());
 
+app.use(cors());
+
 // Passport config
 require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", users);
-
 // app.use("/api/account/signin", signin);
 
 app.use("/api/products", productRoutes);

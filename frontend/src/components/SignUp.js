@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { registerUser } from "../actions/authActions";
 import classnames from "classnames";
 import PropTypes from "prop-types";
+// import { Observable } from 'rxjs';
 
 class SignUp extends Component {
     constructor() {
@@ -39,7 +40,14 @@ class SignUp extends Component {
     }
 
     onChange = e => {
-        this.setState({ [e.target.id]: e.target.value });
+        const target = e.target;
+        const id = target.id;
+        const value = target.value;
+
+        this.setState({ 
+            [id]: value
+        });
+
     };
 
     onSubmit = e => {

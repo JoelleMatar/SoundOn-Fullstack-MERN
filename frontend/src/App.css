@@ -914,11 +914,11 @@ footer h3 {
 }
 
 .product-name {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bolder;
   color: chocolate;
   display: block;
-  margin: 2px 0 5px 0;
+  margin: 0 0 10px 0;
 }
 
 .product-name:hover,
@@ -950,6 +950,19 @@ footer h3 {
   border-image: none;
   border-style: solid solid none;
   border-width: 1px 0;
+  height: 330px;
+}
+
+@media (max-width: 576px) {
+  .productBox-content {
+    height: 380px;
+  }
+}
+
+@media (max-width: 470px) {
+  .productBox-content {
+    height: 340px;
+  }
 }
 
 .productImages {
@@ -976,6 +989,7 @@ footer h3 {
   font-family: 'Quicksand', sans-serif;
 }
 
+
 .product-desc .btn-primary:hover {
   background-color: #fe9200;
   color: honeydew;
@@ -986,6 +1000,7 @@ footer h3 {
   font-family: 'Quicksand', sans-serif;
   font-size: 11px;
   color: black;
+  margin-bottom: 15px;
 }
 
 @media (max-width: 575px) {
@@ -1029,6 +1044,12 @@ footer h3 {
   align-items: center;
 }
 
+.productsInfo h2 {
+  color: honeydew;
+  font-size: 35px;
+  text-align: center;
+}
+
 .image-left {
   float: left;
   height: fit-content;
@@ -1046,7 +1067,7 @@ footer h3 {
 }
 
 .name-left {
-  font-size: 50px;
+  font-size: 45px;
   font-family: Yellowtail;
   color: #fe9200;
   text-align: center;

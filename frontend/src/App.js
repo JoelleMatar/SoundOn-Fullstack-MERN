@@ -60,7 +60,7 @@ function App() {
             <Route path='/accessoriesCategories' component={AccessoriesCategories} />
             <Route path='/guitarList' component={GuitarList} />
             <Route path='/login' component={Login} />
-            <Route path='/signUp' component={SignUp} />
+            <Route path='/register' component={SignUp} />
             <Route path='/product/:id' component={ProductInfo} />
             <Route path='/shoppingCart' component={ShoppingCart} />
             {/* <PrivateRoute exact path="/login" component={Dashboard} /> */}
