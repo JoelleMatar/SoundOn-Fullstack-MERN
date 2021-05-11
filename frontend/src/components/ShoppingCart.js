@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 // actions
 import { addToCart, removeFromCart } from "../actions/cartActions";
+import { logoutUser } from '../actions/authActions';
 
 const ShoppingCart = () => {
 
@@ -28,6 +29,7 @@ const ShoppingCart = () => {
     const getCartSubTotal = () => {
         return cartItems.reduce((price, item) => (item.price * item.qty) + price, 0);
     };
+
 
     return (
         <div className="shoppingCart">
@@ -55,6 +57,9 @@ const ShoppingCart = () => {
                     <button>Purchase Items</button>
                 </div>
             </div>
+            {/* <div className="Logout">
+                <button type="button">Logout</button>
+            </div> */}
         </div>
     )
 }

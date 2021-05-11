@@ -51,7 +51,7 @@ const HomeSections = () => {
                                 </div>
 
                                 <div className="col-sm-6 artist">
-                                    <Link to="/Artists">
+                                    <Link to="/Contact">
                                         <img src={Artists} alt="Artists" className="accessoriesImg mx-auto d-block"/>
                                         <h3 className="bottom-overlay-text">Contact Us</h3>
                                     </Link>

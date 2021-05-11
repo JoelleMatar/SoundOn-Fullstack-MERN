@@ -22,7 +22,7 @@ router.post("/register", (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
     // Check validation
     if (!isValid) {
-        return res.status(400).json(errors);
+        return res.status(400).json("Errors occured during registration");
     }
     User.findOne({ email: req.body.email }).then(user => {
         if (user) {
@@ -62,6 +62,7 @@ router.post("/login", (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
     // Check validation
     if (!isValid) {
+        alert("Invalid User, Password Incorrect!");
         return res.status(400).json(errors);
     }
     const email = req.body.email;
@@ -79,7 +80,7 @@ router.post("/login", (req, res) => {
                 // Create JWT Payload
                 const payload = {
                     id: user.id,
-                    firstName: user.firstName
+                    email: user.email
                 };
                 // Sign token
                 jwt.sign(

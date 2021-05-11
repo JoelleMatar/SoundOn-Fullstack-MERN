@@ -219,11 +219,14 @@ footer {
   font-family: Yellowtail !important;
   font-size: 20px !important;
   text-align: center;
-  bottom: 0;
+  bottom: 0%;
+  /* position: fixed; */
+  position: sticky;
   padding-top: 15px;
-  z-index: 0;
+  z-index: -1;
   /* display: flex; */
 } 
+
 
 footer h3 {
   font-size: 26px;
@@ -1222,7 +1225,7 @@ footer h3 {
 }
 
 .shoppingCart h2 {
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
   text-align: center;
   font-size: 45px;
   color: #fe9200;

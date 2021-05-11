@@ -35,7 +35,7 @@ class Login extends Component {
     componentDidMount() {
         // If logged in and user navigates to Login page, should redirect them to dashboard
         if (this.props.auth.isAuthenticated) {
-            this.props.history.push("/");
+            this.props.history.push("/shoppingCart");
         }
     }
 
@@ -82,7 +82,7 @@ class Login extends Component {
                                             <div className="form-group" style={{ marginBottom: "20px" }}>
                                                 <label className="form-control-label" htmlFor="password">PASSWORD</label>
                                                 <input type="password" className={classnames("", {invalid: errors.password || errors.passwordincorrect}),"form-control inputPassword password"} id="password" onChange={this.onChange} value={this.state.password} error={errors.password} />
-                                                <span className="red-text">{errors.password}{errors.passwordincorrect}</span>
+                                                <span className="red-text">{errors.password}{errors.passwordincorrect}{console.log(errors.password)}</span>
                                             </div>
 
                                             <div className="col-lg-12">
