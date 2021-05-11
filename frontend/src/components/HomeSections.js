@@ -35,7 +35,7 @@ const HomeSections = () => {
                     <div className="bs-row gutter-row">
                         <div className="col-md-6">
                             <div className="instruments">
-                                <Link to="/InstrumentsCategories">
+                                <Link to="/GuitarList">
                                     <img src={Instruments} alt="Instruments" className="instrumentsImg mx-auto d-block"/>
                                     <h3 className="bottom-overlay-text">Instruments Categories</h3>
                                 </Link>
@@ -44,16 +44,16 @@ const HomeSections = () => {
                         <div className="col-md-6 ">
                             <div>
                                 <div className="col-sm-6 accessory">
-                                    <Link to="/AccessoriesCategories">
+                                    <Link to="/Contact">
                                         <img src={Accessories} alt="Accessories" className="accessoriesImg mx-auto d-block"/>
-                                        <h3 className="bottom-overlay-text">Accessories Categories</h3>
+                                        <h3 className="bottom-overlay-text">Contact Us</h3>
                                     </Link>
                                 </div>
 
                                 <div className="col-sm-6 artist">
-                                    <Link to="/Contact">
+                                    <Link to="/login">
                                         <img src={Artists} alt="Artists" className="accessoriesImg mx-auto d-block"/>
-                                        <h3 className="bottom-overlay-text">Contact Us</h3>
+                                        <h3 className="bottom-overlay-text">Sign Up Now</h3>
                                     </Link>
                                 </div>
                             </div>

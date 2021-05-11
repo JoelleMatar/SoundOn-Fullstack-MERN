@@ -25,8 +25,8 @@ const Navbar = () => {
                         <div className="collapse navbar-collapse pr-5" id="ulContent">
                             <ul className="navbar-nav ml-auto" id="nav-ul">
                                 <li className="nav-item px-2"><NavLink exact to="/" className="nav-link" activeClassName="active">Home</NavLink></li>
-                                <li className="nav-item px-2"><NavLink exact to="/instrumentsCategories" className="nav-link" activeClassName="active">Instruments</NavLink></li>
-                                <li className="nav-item px-2"><NavLink exact to="/accessoriesCategories" className="nav-link" activeClassName="active">Accessories</NavLink></li>
+                                <li className="nav-item px-2"><NavLink exact to="/GuitarList" className="nav-link" activeClassName="active">Shop</NavLink></li>
+                                {/* <li className="nav-item px-2"><NavLink exact to="/accessoriesCategories" className="nav-link" activeClassName="active">Accessories</NavLink></li> */}
                                 <li className="nav-item px-2"><NavLink exact to="/about" className="nav-link" activeClassName="active">About</NavLink></li>
                                 <li className="nav-item px-2"><NavLink exact to="/contact" className="nav-link" activeClassName="active">Contact Us</NavLink></li>
                                 <li className="nav-item px-2"><NavLink exact to="/login" className="nav-link" activeClassName="active">Login | Sign Up</NavLink></li>

@@ -11,10 +11,10 @@ const Footer = () => {
                         <div className="linksFooter col-md-4 col-sm-4 hidden-xs">
                             <h3>Links</h3>
                             <h4>
-                                <li><Link to="/InstrumentsCategories">Instruments</Link></li>
-                                <li><Link to="/AccessoriesCategories">Accessories</Link></li>
-                                <li><Link to="/About">About</Link></li>
-                                <li><Link to="/Contact">Contact Us</Link></li>
+                                <li><Link to="/GuitarList">Shop</Link></li>
+                                {/* <li><Link to="/AccessoriesCategories">Accessories</Link></li> */}
+                                <li><Link to="/about">About</Link></li>
+                                <li><Link to="/contact">Contact Us</Link></li>
                             </h4>
                         </div>
                         <div className="contactFooter col-md-4 col-sm-4 col-xs-12">
@@ -30,7 +30,7 @@ const Footer = () => {
                         <div className="memberFooter col-md-4 col-sm-4 hidden-xs">
                             <h3>Membership</h3>
                             <h4>
-                                <li><Link to="/Login">Login | Sign Up</Link></li>
+                                <li><Link to="/login">Login | Sign Up</Link></li>
                                 {/* <li><a href="login.html">Login</a></li>  */}
                             </h4>
                         </div>

@@ -21,7 +21,7 @@ const Product = ({imageUrl, name, price, description, productId}) => {
                                         <p className="product-name">{name}</p>
                                     </div>
                                     <div className="row">
-                                        <p className="product-desc-info">{description.substring(0, 110)}...</p>
+                                        <p className="product-desc-info">{description.substring(0, 100)}...</p>
                                     </div>
                                     <div className="row">
                                         <Link to={`/product/${productId}`} className="btn btn-outline btn-primary viewDetail">Details <i className="fa fa-long-arrow-right"></i> </Link>
