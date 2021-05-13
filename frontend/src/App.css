@@ -208,28 +208,31 @@ body {
 }
 
 
-
+/* .footer-dark {
+    position: sticky;
+    top: 100%;
+} */
 
 /* Footer */
 footer { 
-  width:100%; 
-  height: 250px;
-  margin-top: 0px;
-  background-color:#bbb !important;
+  position: sticky;
+  top: 100%;
+  width: 100%;
   font-family: Yellowtail !important;
-  font-size: 20px !important;
   text-align: center;
-  bottom: 0%;
-  position: fixed;
-  padding-top: 15px;
-  z-index: -1;
-  /* display: flex; */
+  font-size: 20px !important;
+  clear: both;
+  height: 250px;
 } 
 
+footer .row {
+  height: 250px;
+}
 
 footer h3 {
   font-size: 26px;
   color: #333;
+  padding-top: 15px;
 }
 
 .linksFooter, .contactFooter, .memberFooter { 
@@ -1204,6 +1207,9 @@ footer h3 {
 .cartItem-select {
   padding: 10px 17px;
   font-size: 16px;
+  width: 50px;
+  text-align: center;
+  background: #f4f4f4;
 }
 
 .cartItem-deleteBtn {

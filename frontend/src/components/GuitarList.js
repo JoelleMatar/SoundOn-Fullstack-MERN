@@ -36,28 +36,27 @@ const GuitarList = () => {
                     </span>
                 </div>
             </div>
-            
-            {
-                loading ? <h2 style={{color: "honeydew", fontSize: "50px", textAlign: "center"}}>Loading ...</h2> : 
-                error ? <h2 style={{color: "honeydew", fontSize: "50px", textAlign: "center"}}>{error}</h2> : 
-             
-                products.filter((product) => {
-                    if(searchTerm == "") {
-                        return product
-                    }
-                    else if(product.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())) {
-                        return product
-                    }
-                }).map((product) => (
-                    <Product key={product._id} 
-                             productId={product._id} 
-                             name={product.name}
-                             price={product.price}
-                             description={product.description}
-                             imageUrl={product.imageUrl} />
-                ))
-            }
-        </div>
+                {
+                    loading ? <h2 style={{color: "honeydew", fontSize: "50px", textAlign: "center"}}>Loading ...</h2> : 
+                    error ? <h2 style={{color: "honeydew", fontSize: "50px", textAlign: "center"}}>{error}</h2> : 
+                
+                    products.filter((product) => {
+                        if(searchTerm == "") {
+                            return product
+                        }
+                        else if(product.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())) {
+                            return product
+                        }
+                    }).map((product) => (
+                        <Product key={product._id} 
+                                productId={product._id} 
+                                name={product.name}
+                                price={product.price}
+                                description={product.description}
+                                imageUrl={product.imageUrl} />
+                    ))
+                }
+            </div>
     )
 }
 

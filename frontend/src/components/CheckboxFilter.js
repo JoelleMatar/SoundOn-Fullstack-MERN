@@ -23,31 +23,31 @@ const CheckboxFilter = () => {
                         </button>
                     </h5>
                 </div>
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
-                    <div class="card-body">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="guitarInstCheck" value="option1" />
-                            <label class="form-check-label" for="guitarInstCheck">Guitar Instruments</label>
+                <div id="collapseOne" className="collapse show" aria-labelledby="headingOne">
+                    <div className="card-body">
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" type="checkbox" id="guitarInstCheck" value="option1" />
+                            <label className="form-check-label" htmlFor="guitarInstCheck">Guitar Instruments</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="pianoInstCheck" value="option2" />
-                            <label class="form-check-label" for="pianoInstCheck">Piano Instruments</label>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" type="checkbox" id="pianoInstCheck" value="option2" />
+                            <label className="form-check-label" htmlFor="pianoInstCheck">Piano Instruments</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="drumsInstCheck" value="option3" />
-                            <label class="form-check-label" for="drumsInstCheck">Drums Instruments</label>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" type="checkbox" id="drumsInstCheck" value="option3" />
+                            <label className="form-check-label" htmlFor="drumsInstCheck">Drums Instruments</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="guitarAccessCheck" value="option1" />
-                            <label class="form-check-label" for="guitarAccessCheck">Guitar Accessories</label>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" type="checkbox" id="guitarAccessCheck" value="option1" />
+                            <label className="form-check-label" htmlFor="guitarAccessCheck">Guitar Accessories</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="pianoAccessCheck" value="option2" />
-                            <label class="form-check-label" for="pianoAccessCheck">Piano Accessories</label>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" type="checkbox" id="pianoAccessCheck" value="option2" />
+                            <label className="form-check-label" htmlFor="pianoAccessCheck">Piano Accessories</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="drumsAccessCheck" value="option3" />
-                            <label class="form-check-label" for="drumsAccessCheck">Drums Accessories</label>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" type="checkbox" id="drumsAccessCheck" value="option3" />
+                            <label className="form-check-label" htmlFor="drumsAccessCheck">Drums Accessories</label>
                         </div>
                     </div>
                 </div>

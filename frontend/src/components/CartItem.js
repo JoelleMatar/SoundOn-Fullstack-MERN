@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
 
 const CartItem = ({item, qtyChangeHandler, removeHandler}) => {
+    const [qty, setQty] = useState(1);
+
     return (
         <div className="cartItem">
             <div className="cartItem-image">
@@ -13,13 +16,7 @@ const CartItem = ({item, qtyChangeHandler, removeHandler}) => {
 
             <p className="cartItem-price">${item.price}</p>
 
-            <select className="cartItem-select" value={item.qty} onChange={(e) => qtyChangeHandler(item.product, e.target.value)}>
-                {[...Array(item.countInStock).keys()].map((x) => (
-                    <option key={x + 1} value={x + 1}>
-                        {x + 1}
-                    </option>
-                ))}
-            </select>
+            <input className="cartItem-select" value={item.qty} disabled></input>
 
             <button className="cartItem-deleteBtn" onClick={() => removeHandler(item.product)}><i className="fa fa-trash"></i></button>
         </div>
