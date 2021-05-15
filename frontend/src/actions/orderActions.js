@@ -1,4 +1,4 @@
-const axios = require ('axios');
+import axios from "axios";
 const { CART_RESET } = require ('../constants/cartConstants');
 const {
   ORDER_CREATE_REQUEST,
@@ -33,7 +33,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
     //   },
     // }
 
-    const { data } = await axios.post(`/api/orders`, order)
+    const { data } = await axios.post("/api/products/addOrder", order)
 
     dispatch({
       type: ORDER_CREATE_SUCCESS,
@@ -75,7 +75,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`/api/orders/${id}`)
+    const { data } = await axios.get(`/api/products/order/${id}`)
 
     dispatch({
       type: ORDER_DETAILS_SUCCESS,
@@ -113,7 +113,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
     //   },
     // }
 
-    const { data } = await axios.get(`/api/orders/myorders`)
+    const { data } = {data: {}}
 
     dispatch({
       type: ORDER_LIST_MY_SUCCESS,
@@ -150,7 +150,7 @@ export const listOrders = () => async (dispatch, getState) => {
     //   },
     // }
 
-    const { data } = await axios.get(`/api/orders`)
+    const { data } = {data: {}}
 
     dispatch({
       type: ORDER_LIST_SUCCESS,

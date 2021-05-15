@@ -30,6 +30,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
 // @route   GET /apis/orders/:id
 // @access  Private
 const getOrderById = asyncHandler(async (req, res) => {
+  console.log("ASDFASD")
   const order = await Order.findById(req.params.id).populate(
     'user',
     'name email'
@@ -45,7 +46,7 @@ const getOrderById = asyncHandler(async (req, res) => {
 
 
 
-export {
+module.exports = {
   addOrderItems,
   getOrderById,
-}
+};

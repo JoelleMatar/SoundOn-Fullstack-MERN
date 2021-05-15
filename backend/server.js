@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const users = require("./routes/api/users");
 const cors = require("cors");
-// const orderRoutes = require("./routes/api/order");
+// const orderRoutes = require("./routes/orderRoutes");
 
 connectDB();
 
