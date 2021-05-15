@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import SoundOn_Logo1 from '../images/SoundOn_Logo1.png';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { NavDropdown } from 'react-bootstrap';
+import { logoutUser } from '../actions/authActions';
 
 const Navbar = () => {
 
@@ -12,6 +14,15 @@ const Navbar = () => {
     const getCartCount = () => {
         return cartItems.reduce((qty, item) => qty + Number(item.qty), 0);
     };
+
+    const dispatch = useDispatch()
+
+    const userLogin = useSelector((state) => state.userLogin)
+    const { user } = userLogin
+  
+    const logoutHandler = () => {
+      dispatch(logoutUser())
+    }
 
     return (
         <div>
@@ -29,7 +40,21 @@ const Navbar = () => {
                                 {/* <li className="nav-item px-2"><NavLink exact to="/accessoriesCategories" className="nav-link" activeClassName="active">Accessories</NavLink></li> */}
                                 <li className="nav-item px-2"><NavLink exact to="/about" className="nav-link" activeClassName="active">About</NavLink></li>
                                 <li className="nav-item px-2"><NavLink exact to="/contact" className="nav-link" activeClassName="active">Contact Us</NavLink></li>
-                                <li className="nav-item px-2"><NavLink exact to="/login" className="nav-link" activeClassName="active">Login | Sign Up</NavLink></li>
+                                {/* <li className="nav-item px-2"><NavLink exact to="/login" className="nav-link" activeClassName="active">Login | Sign Up</NavLink></li> */}
+                                {user ? (
+                                    <li className="nav-item px-2">
+                                        {/* <NavLink exact to="/login" className="nav-link" activeClassName="active"> */}
+                                            <NavDropdown title={user.firstName} id='username'>
+                                                <NavDropdown.Item onClick={logoutHandler}>
+                                                    Logout
+                                                </NavDropdown.Item>
+                                            </NavDropdown>
+                                        {/* </NavLink> */}
+                                    </li>
+                                ) : ( 
+                                    <li className="nav-item px-2"><NavLink exact to="/login" className="nav-link" activeClassName="active">Login | Sign Up</NavLink></li>
+                                )}
+                                
                                 <li className="nav-item px-2">
                                     <NavLink exact to="/shoppingCart" className="nav-link" activeClassName="active">
                                         <i className="fa fa-shopping-cart"><span className="cart_badge">{getCartCount()}</span></i>

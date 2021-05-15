@@ -21,7 +21,7 @@ class Login extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.auth.isAuthenticated) {
+        if (nextProps.userLogin.isAuthenticated) {
             this.props.history.push("/shoppingCart"); // push user to shoppingcart when they login
         }
 
@@ -34,7 +34,7 @@ class Login extends Component {
 
     componentDidMount() {
         // If logged in and user navigates to Login page, should redirect them to dashboard
-        if (this.props.auth.isAuthenticated) {
+        if (this.props.userLogin.isAuthenticated) {
             this.props.history.push("/shoppingCart");
         }
     }
@@ -118,12 +118,12 @@ class Login extends Component {
 
 Login.propTypes = {
     loginUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
+    userLogin: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    auth: state.auth,
+    userLogin: state.userLogin,
     errors: state.errors
 });
 

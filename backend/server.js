@@ -2,11 +2,12 @@ require("dotenv").config();
 const express = require("express");
 const connectDB = require("./config/db");
 const productRoutes = require("./routes/productRoutes");
-const signin = require("./routes/api/users");
+// const signin = require("./routes/api/users");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const users = require("./routes/api/users");
 const cors = require("cors");
+// const orderRoutes = require("./routes/api/order");
 
 connectDB();
 
@@ -39,6 +40,9 @@ app.use("/api/users", users);
 // app.use("/api/account/signin", signin);
 
 app.use("/api/products", productRoutes);
+// app.use("/api/orders", orderRoutes);
+
+// app.use("/api/orders", require("./routes/api/order"));
 
 const PORT = process.env.PORT || 6500;
 
