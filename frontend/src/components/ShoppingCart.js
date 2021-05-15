@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 // actions
-import { addToCart, removeFromCart } from "../actions/cartActions";
+import { addToCart, removeFromCart, resetCart } from "../actions/cartActions";
 import { logoutUser } from '../actions/authActions';
 import { createOrder, getOrder, getOrder as orderItems } from "../actions/orderActions";
 
@@ -39,7 +39,8 @@ const ShoppingCart = ({ match, history }) => {
             orderItems: cart.cartItems,
             totalPrice: cart.totalPrice,
           })
-        )
+        );
+        dispatch(resetCart());
       }
 
     return (

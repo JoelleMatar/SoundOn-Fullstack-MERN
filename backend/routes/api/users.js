@@ -29,6 +29,7 @@ router.post("/register", (req, res) => {
             return res.status(400).json({ email: "Email already exists" });
         } else {
             const newUser = new User({
+                _id: req.body._id,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email,
@@ -36,6 +37,8 @@ router.post("/register", (req, res) => {
                 phoneNumber: req.body.phoneNumber,
                 age: req.body.age
             });
+
+            console.log("new user:" + newUser);
             // Hash password before saving in database
             bcrypt.genSalt(10, (err, salt) => {
                 bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -82,6 +85,7 @@ router.post("/login", (req, res) => {
                     id: user.id,
                     email: user.email
                 };
+                console.log("user login:" + payload);
                 // Sign token
                 jwt.sign(
                     payload,

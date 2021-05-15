@@ -32,7 +32,6 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
 
         case actionTypes.CART_RESET:
             return {
-                ...state,
                 cartItems: [],
             }
 
