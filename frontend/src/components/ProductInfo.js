@@ -47,7 +47,7 @@ const ProductInfo = ({ match, history }) => {
                                     <p>
                                         Status: <span>{product.countInStock > 0 ? "In Stock" : "Out Of Stock" }</span>
                                     </p><hr />
-                                    <p>
+                                    <p id="qtyDetail">
                                         Quantity:
                                         <select value={qty} onChange={(e) => setQty(e.target.value)}>
                                             {[...Array(product.countInStock).keys()].map((x) => (

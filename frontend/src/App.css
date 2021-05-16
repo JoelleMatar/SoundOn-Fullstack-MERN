@@ -900,7 +900,12 @@ footer h3 {
 }
 
 .Filter {
-  margin-bottom: 70px;
+  margin-bottom: 5px;
+  font-family: 'Quicksand', sans-serif;;
+}
+
+#filterProducts {
+  margin-top: 80px;
 }
 
 #searchBox, #search-addon {
@@ -909,8 +914,15 @@ footer h3 {
 }
 
 #collapsableBtn {
-  font-size: 14px;
+  font-size: 16px;
   height: 25px;
+  color: #495057;
+  padding-top: 0;
+  text-decoration: none;
+}
+
+#collapsableBtn .fa-filter {
+  margin-right: 15px;
 }
 
 #collapseOne .form-check {
@@ -986,6 +998,27 @@ footer h3 {
 @media (max-width: 576px) {
   .productBox-content {
     height: 400px;
+  }
+  #filtercheckbox {
+    margin-left: -45px;
+    width: 543px;
+  }
+  #collapsableBtn {
+    font-size: 14px;
+  }
+
+  #searchDiv {
+    width: 355px;
+    margin-top: 15px;
+    margin-left: -5px;
+  }
+
+  #search-addon {
+    display: none;
+  }
+
+  .productBox{
+    margin-left: -15px;
   }
 }
 
@@ -1200,7 +1233,7 @@ footer h3 {
 .cartItem-name, .cartItem-price {
   font-size: 20px;
   font-family: 'Quicksand', sans-serif;
-  color: #fe9200;
+  color: #333;
   padding-top: 10px;
 }
 
@@ -1210,6 +1243,8 @@ footer h3 {
   width: 50px;
   text-align: center;
   background: #f4f4f4;
+  color: #333;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .cartItem-deleteBtn {
@@ -1279,6 +1314,13 @@ footer h3 {
   box-shadow: 0 1px 4px black;
   height: fit-content;
   border-radius: 3px;
+  margin-top: 17px;
+}
+
+#qtyDetail select{
+  margin-left: 10px;
+  width: 45px;
+  height: 35px;
 }
 
 .cart-right div {

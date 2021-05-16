@@ -8,7 +8,7 @@ const cartSchema = new mongoose.Schema({
     // },
     orderItems: [
         {
-            countInStock: {type: Number, required: false},
+            // countInStock: {type: Number, required: false},
             name: { type: String, required: true },
             qty: { type: Number, required: true },
             // image: { type: String, required: true },

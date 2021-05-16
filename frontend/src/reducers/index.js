@@ -3,6 +3,7 @@ import {authReducers} from "./authReducers";
 import errorReducers from "./errorReducers";
 import { cartReducer } from "./cartReducers";
 import { getProductDetailsReducer, getProductsReducer } from "./productReducers";
+import { getCategoriesReducer } from "./categoryReducers";
 import {
     orderCreateReducer,
     orderDetailsReducer,
@@ -20,4 +21,5 @@ export default combineReducers({
     orderDetails: orderDetailsReducer,
     orderListMy: orderListMyReducer,
     orderList: orderListReducer,
+    getCategories: getCategoriesReducer,
 });
