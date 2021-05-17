@@ -18,12 +18,14 @@ export const registerUser = (userData, history) => dispatch => {
 
 // Login - get user token
 export const loginUser = (userData, history) => dispatch => {
+    console.log("insideee ");
     axios
         .post("http://localhost:6500/api/users/login", userData)
         .then(res => {
             // Save to localStorage
             // Set token to localStorage
             const { token } = res.userData;
+            console.log("loginuser res" + res.userData);
             localStorage.setItem("jwtToken", token);
             // Set token to Auth header
             setAuthToken(token);
@@ -32,7 +34,8 @@ export const loginUser = (userData, history) => dispatch => {
             // Set current user
             dispatch(setCurrentUser(decoded));
             // Go to shopping cart
-            history.push("/shoppingCart");
+            history.push("/");
+            console.log("in loginuser");
         })
         .catch(err =>
             dispatch({

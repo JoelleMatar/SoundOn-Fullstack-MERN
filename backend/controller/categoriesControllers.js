@@ -1,10 +1,12 @@
 const Category = require('../models/Category');
 
 const getAllCategories = async (req, res) => {
+    console.log("chouu");
     try 
     {
-        const categories = await Category.find({});
-
+        console.log("kiff");
+        const categories = await Category.findById({id: "60a13116df04951a8c33d779"});
+        console.log("Categories:" + categories);
         res.json(categories);
     } 
     catch (error) 

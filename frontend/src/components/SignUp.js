@@ -25,10 +25,12 @@ class SignUp extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log(nextProps.errors);
         if (nextProps.errors) {
             this.setState({
                 errors: nextProps.errors
             });
+            console.log(nextProps.errors);
         }
     }
 
@@ -68,7 +70,7 @@ class SignUp extends Component {
     };
 
     render() {
-        const { errors } = this.state;
+        const  {errors}  = this.state;
 
         return (
             <div className="container" id="signUpBodyBg">

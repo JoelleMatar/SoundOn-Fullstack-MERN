@@ -62,12 +62,18 @@ router.post("/register", (req, res) => {
 // @access Public
 router.post("/login", (req, res) => {
     // Form validation
+    console.log("hi");
     const { errors, isValid } = validateLoginInput(req.body);
+
+    console.log("kouks" + errors.email);
+    console.log("isvalid" +isValid);
     // Check validation
     if (!isValid) {
-        alert("Invalid User, Password Incorrect!");
+        // alert("Invalid User, Password Incorrect!");
         return res.status(400).json(errors);
     }
+    
+    
     const email = req.body.email;
     const password = req.body.password;
     // Find user by email

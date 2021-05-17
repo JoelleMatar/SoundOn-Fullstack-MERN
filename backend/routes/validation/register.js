@@ -39,7 +39,9 @@ module.exports = function validateRegisterInput(data) {
     if (Validator.isEmpty(data.age)) {
         errors.age = "Age field is required";
     }
+    console.log(errors);
     return {
+        
         errors,
         isValid: isEmpty(errors)
     };

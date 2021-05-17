@@ -29,11 +29,12 @@ class Login extends Component {
             this.setState({
                 errors: nextProps.errors
             });
+            console.log(nextProps.errors);
         }
     }
 
     componentDidMount() {
-        // If logged in and user navigates to Login page, should redirect them to dashboard
+        // If logged in and user navigates to Login page, should redirect them to shoppingcart
         if (this.props.userLogin.isAuthenticated) {
             this.props.history.push("/shoppingCart");
         }
@@ -43,7 +44,7 @@ class Login extends Component {
         this.setState({ [e.target.id]: e.target.value });
     };
 
-    onSubmit = e => {
+    onSubmit = (e, history) => {
         e.preventDefault();
 
         const userData = {
@@ -51,13 +52,13 @@ class Login extends Component {
             password: this.state.password
         };
 
-        this.props.loginUser(userData, this.props.history.push("/shoppingCart")); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
+        this.props.loginUser(userData, history); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
 
         console.log(userData);
     };
 
     render() {
-        const { errors } = this.state;
+        const  {errors}  = this.state;
 
         return (
             <div id="loginBodyBg">
@@ -77,12 +78,12 @@ class Login extends Component {
                                             <div className="form-group">
                                                 <label className="form-control-label" htmlFor="email">EMAIL</label>
                                                 <input type="email" className={classnames("", {invalid: errors.email || errors.emailnotfound}),"form-control inputEmail email"} id="email" onChange={this.onChange} value={this.state.email} error={errors.email} />
-                                                {/* <span className="red-text">{errors.email}{errors.emailnotfound}</span> */}
+                                                <span className="red-text">{errors.email}{errors.emailnotfound}</span>
                                             </div>
                                             <div className="form-group" style={{ marginBottom: "20px" }}>
                                                 <label className="form-control-label" htmlFor="password">PASSWORD</label>
                                                 <input type="password" className={classnames("", {invalid: errors.password || errors.passwordincorrect}),"form-control inputPassword password"} id="password" onChange={this.onChange} value={this.state.password} error={errors.password} />
-                                                {/* <span className="red-text">{errors.password}{errors.passwordincorrect}{console.log(errors.password)}</span> */}
+                                                <span className="red-text">{errors.password}{errors.passwordincorrect}</span>
                                             </div>
 
                                             <div className="col-lg-12">

@@ -28,9 +28,16 @@ const CheckboxFilter = (props) => {
         }
 
         setChecked(newChecked);
-        props.handleFilters(newChecked);
+        props.handleFilters(value);
     }
 
+    const categories = [];
+
+    for (const [key, value] of Object.entries(products)) {
+        categories.push(value.category);
+    }
+
+    const uniqueCategories = Array.from(new Set(categories));
 
     return (
         <div className="accordion">
@@ -70,10 +77,10 @@ const CheckboxFilter = (props) => {
                         </div> */}
 
                         {
-                            products.map((value, index) => (
+                            uniqueCategories.map((value, index) => (
                                 <div className="form-check form-check-inline">
-                                    <input className="form-check-input" type="checkbox" id="drumsAccessCheck" value={value.category} checked={Checked.indexOf(value._id) === -1 ? false : true} onChange={() => handleToggle(value._id)} />
-                                    <label className="form-check-label" htmlFor="drumsAccessCheck">{value.category}</label>
+                                    <input className="form-check-input" type="checkbox" id="drumsAccessCheck" checked={Checked.indexOf(value) === -1 ? false : true} onChange={() => handleToggle(value)} />
+                                    <label className="form-check-label" htmlFor="drumsAccessCheck">{value}</label>
                                 </div>
                             ))
                         }

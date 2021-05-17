@@ -8,6 +8,7 @@ const passport = require("passport");
 const users = require("./routes/api/users");
 const cors = require("cors");
 // const orderRoutes = require("./routes/orderRoutes");
+const categoryRoutes = require("./routes/api/category");
 
 connectDB();
 
@@ -40,6 +41,8 @@ app.use("/api/users", users);
 // app.use("/api/account/signin", signin);
 
 app.use("/api/products", productRoutes);
+
+// app.use("/api/products/category", categoryRoutes);
 // app.use("/api/orders", orderRoutes);
 
 // app.use("/api/orders", require("./routes/api/order"));

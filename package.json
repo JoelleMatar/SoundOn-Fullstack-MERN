@@ -29,6 +29,8 @@
     "mongoose": "^5.12.6",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
+    "react-alert": "^7.0.3",
+    "react-bootstrap": "^1.6.0",
     "react-collapse": "^5.1.0",
     "react-devtools": "^4.13.0",
     "react-slidedown": "^2.4.5",
