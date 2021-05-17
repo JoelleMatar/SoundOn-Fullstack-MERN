@@ -7,6 +7,7 @@ const keys = require("../../config/keys");
 // Load input validation
 const validateRegisterInput = require("../validation/register");
 const validateLoginInput = require("../validation/login");
+const UserSession = require("../../models/UserSession");
 
 // Load User model
 const User = require("../../models/User");
@@ -92,25 +93,105 @@ router.post("/login", (req, res) => {
                     email: user.email
                 };
                 console.log("user login:" + payload);
-                // Sign token
-                jwt.sign(
-                    payload,
-                    keys.secretOrKey,
-                    {
-                        expiresIn: 31556926 // 1 year in seconds
-                    },
-                    (err, token) => {
-                        res.json({
-                            success: true,
-                            token: "Bearer " + token
+
+                const userSession = new UserSession();
+                userSession.userId = user._id;
+                userSession.save((err, doc) => {
+                    if(err) {
+                        return res.send({
+                            success: false,
+                            message: "Error: server error"
                         });
                     }
-                );
+                    return res.send({
+                        success: true,
+                        message: "Valid signin",
+                        token: doc._id
+                    })
+                })
+                // Sign token
+                // jwt.sign(
+                //     payload,
+                //     keys.secretOrKey,
+                //     {
+                //         expiresIn: 31556926 // 1 year in seconds
+                //     },
+                //     (err, token) => {
+                //         res.json({
+                //             success: true,
+                //             token: "Bearer " + token
+                //         });
+                //     }
+                // );
+
+                
             } else {
                 return res
                     .status(400)
                     .json({ passwordincorrect: "Password incorrect" });
             }
+        });
+    });
+});
+
+// @route POST api/users/verify
+// @desc Login user and return JWT token
+// @access Public
+router.get("/verify", (req, res) => {
+    const { query } = req;
+    const { token } = query;
+
+    UserSession.find({
+        _id: token,
+        isDeleted: false
+    }, (err, sessions) => {
+        if(err) {
+            return res.send({
+                success: false,
+                message: "Error: server error"
+            });
+        }
+
+        if(sessions.length != 1) {
+            return res.send({
+                success: false,
+                message: "Error: Invalid"
+            });
+        }
+        else {
+            return res.send({
+                success: true,
+                message: "Good"
+            });
+        }
+    });
+});
+
+// @route POST api/users/verify
+// @desc Login user and return JWT token
+// @access Public
+router.get("/logout", (req, res) => {
+    const { query } = req;
+    const { token } = query;
+
+    UserSession.findOneAndUpdate({
+        _id: token,
+        isDeleted: false 
+    }, {
+        $set: { 
+            isDeleted: true 
+        }
+    }, null, (err, sessions) => {
+        if(err) {
+            return res.send({
+                success: false,
+                message: "Error: server error"
+            });
+        }
+
+        return res.send({
+            success: true,
+            message: "Good"
         });
     });
 });
