@@ -20,135 +20,234 @@ class SignUp extends Component {
             password: "",
             phoneNumber: "",
             age: "",
-            errors: {}
+            errors: {},
+            isLoading: true,
+            // token: '',
+            signUpError: '',
         };
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps.errors);
-        if (nextProps.errors) {
-            this.setState({
-                errors: nextProps.errors
-            });
-            console.log(nextProps.errors);
-        }
-    }
+    // componentDidMount() {
+    //     const token = getFromStorage("sound_on");
+    //     if (token) {
+    //         fetch("/api/users/verify?token=" + token)
+    //             .then(res => res.json())
+    //             .then(json => {
+    //                 if (json.success) {
+    //                     this.setState({
+    //                         token,
+    //                         isLoading: false
+    //                     });
+    //                 }
+    //                 else {
+    //                     this.setState({
+    //                         isLoading: false,
+    //                     })
+    //                 }
+    //             });
+    //     }
+    //     else {
+    //         this.setState({
+    //             isLoading: false,
+    //         });
+    //     }
+    // }
 
-    componentDidMount() {
-        // If logged in and user navigates to Register page, should redirect them to dashboard
-        if (this.props.userLogin.isAuthenticated) {
-            this.props.history.push("/");
-        }
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     if (nextProps.userLogin.isAuthenticated) {
+    //         this.props.history.push("/shoppingCart"); // push user to shoppingcart when they login
+    //     }
+
+    //     if (nextProps.errors) {
+    //         this.setState({
+    //             errors: nextProps.errors
+    //         });
+    //         console.log(nextProps.errors);
+    //     }
+    // }
+
+    // componentDidMount() {
+    //     // If logged in and user navigates to Login page, should redirect them to shoppingcart
+    //     if (this.props.userLogin.isAuthenticated) {
+    //         this.props.history.push("/shoppingCart");
+    //     }
+    // }
 
     onChange = e => {
-        const target = e.target;
-        const id = target.id;
-        const value = target.value;
-
-        this.setState({ 
-            [id]: value
-        });
-
+        this.setState({ [e.target.id]: e.target.value });
     };
 
-    onSubmit = e => {
+
+    onSubmit = (e, history) => {
         e.preventDefault();
 
-        const newUser = {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            email: this.state.email,
-            password: this.state.password,
-            phoneNumber: this.state.phoneNumber,
-            age: this.state.age,
-        };
+        const {
+            email: email,
+            password: password,
+            firstName: firstName,
+            lastName: lastName,
+            phoneNumber: phoneNumber,
+            age: age,
+            signUpError: signUpError,
+            // token: token
+        } = this.state;
 
-        this.props.registerUser(newUser, this.props.history.push("/login")); 
+        this.setState({
+            isLoading: true
+        })
 
-        console.log(newUser);
+        fetch("/api/users/register",
+            {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                    firstName: firstName,
+                    lastName: lastName,
+                    phoneNumber: phoneNumber,
+                    age: age,
+                }),
+            }).then(res => res.json())
+            .then(json => {
+                if (json.success) {
+                    this.setState({
+                        signUpError: "Successfully Registered",
+                        isLoading: false,
+                        email: '',
+                        password: '',
+                        firstName: '',
+                        lastName: '',
+                        phoneNumber: '',
+                        age: '',
+                    });
+                    
+                }
+                else {
+                    this.setState({
+                        signUpError: "All Fields Should Be Filled",
+                        isLoading: false,
+                    });
+                }
+            });
+
+        // this.props.loginUser(userData, history); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
+
+        // console.log(userData);
+        this.props.history.push("/login");
+
     };
 
     render() {
-        const  {errors}  = this.state;
+        // const  {errors}  = this.state;
+        const {
+            isLoading,
+            // token,
+            email,
+            password,
+            firstName,
+            lastName,
+            phoneNumber,
+            age,
+            signUpError
+        } = this.state;
 
-        return (
-            <div className="container" id="signUpBodyBg">
-                <SlideDown className={'my-dropdown-slidedown'}>
-                    {/* Sign Up Form  */}
-                    <div className="row" id="signUp-form">
-                        <div className="col-lg-3 col-md-2"></div>
-                        <div className="col-lg-6 col-md-8 login-box">
-                            <div className="col-lg-12 login-title">
-                                <img src={LoginImg} id="loginImg" alt="Artist Image" />
-                                <div className="centeredText">Create An Account</div>
-                            </div>
+        // if (isLoading) {
+        //     return (<div><p style={{ color: "honeydew", fontSize: "50px", textAlign: "center" }}>Loading...</p></div>)
+        // }
 
-                            <div className="col-lg-12 login-form">
-                                <div className="col-lg-12 login-form">
-                                    <form noValidate onSubmit={this.onSubmit}>
-                                        <div className="col-lg-12">
-                                            <div className="col-lg-6 form-group">
-                                                <label className="form-control-label" htmlFor="firstName">FIRST NAME</label>
-                                                <input type="text" className={classnames("", {invalid: errors.firstName}),"form-control inputText firstName"} id="firstName" onChange={this.onChange} value={this.state.firstName} error={errors.firstName}  />
-                                                <span className="red-text">{errors.firstName}</span>
-                                            </div>
-                                            <div className="col-lg-6 form-group" style={{marginBottom: "20px"}}>
-                                                <label className="form-control-label" htmlFor="lastName">LAST NAME</label>
-                                                <input type="text" className={classnames("", {invalid: errors.lastName}),"form-control inputText lastName"} id="lastName" onChange={this.onChange} value={this.state.lastName} error={errors.lastName} />
-                                                <span className="red-text">{errors.lastName}</span>
-                                            </div>
-                                        </div>
+        // if (!token) {
+            return (
 
-                                        <div className="col-lg-12">
-                                            <div className="col-lg-6 form-group">
-                                                <label className="form-control-label" htmlFor="email">EMAIL</label>
-                                                <input type="email" className={classnames("", {invalid: errors.email}),"form-control inputEmail email"} id="email" onChange={this.onChange} value={this.state.email} error={errors.email} />
-                                                <span className="red-text">{errors.email}</span>
-                                            </div>
-                                            <div className="col-lg-6 form-group" style={{marginBottom: "20px"}}>
-                                                <label className="form-control-label" htmlFor="password">PASSWORD</label>
-                                                <input type="password" className={classnames("", {invalid: errors.password}),"form-control inputPassword password"} id="password" onChange={this.onChange} value={this.state.password} error={errors.password} />
-                                                <span className="red-text">{errors.password}</span>
-                                            </div>
-                                        </div>
+                // <div id="loginBodyBg">
 
-                                        <div className="col-lg-12">
-                                            <div className="col-lg-6 form-group">
-                                                <label className="form-control-label" htmlFor="phoneNumber">PHONE NUMBER</label>
-                                                <input type="tel" className={classnames("", {invalid: errors.phoneNumber}),"form-control inputTel phoneNumber"} id="phoneNumber" onChange={this.onChange} value={this.state.phoneNumber} error={errors.phoneNumber} />
-                                                <span className="red-text">{errors.phoneNumber}</span>
-                                            </div>
-                                            <div className="col-lg-6 form-group" style={{marginBottom: "20px"}}>
-                                                <label className="form-control-label" htmlFor="age">AGE</label>
-                                                <input type="text" className={classnames("", {invalid: errors.age}),"form-control inputText age"} id="age" onChange={this.onChange} value={this.state.age} error={errors.age} />
-                                                <span className="red-text">{errors.age}</span>
-                                            </div>
-                                        </div>
 
-                                        <div className="col-lg-12">
-                                            <div id="signupClick" style={{ color: "honeydew", fontSize: "14px" }}>Already Have An Account? 
-                                                <Link to="/Login" > Click To Login</Link>
-                                            </div>
-                                        </div>
 
-                                        <div className="col-lg-12 loginbttm">
-                                            <div className="col-lg-6 login-btm login-text">
-                                                {/* Error Message  */}
-                                            </div>
-                                            <div className="col-lg-12 login-btm login-button">
-                                                <button type="submit" className=" btn btn-outline-primary">SIGN UP</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                <div className="container" id="signUpBodyBg">
+                    <SlideDown className={'my-dropdown-slidedown'}>
+                        {/* Sign Up Form  */}
+                        <div className="row" id="signUp-form">
                             <div className="col-lg-3 col-md-2"></div>
+                            <div className="col-lg-6 col-md-8 login-box">
+                                <div className="col-lg-12 login-title">
+                                    <img src={LoginImg} id="loginImg" alt="Artist Image" />
+                                    <div className="centeredText">Create An Account</div>
+                                </div>
+
+                                {
+                                    (signUpError) ? (
+                                        <p style={{ color: "red", fontSize: "40px", textAlign: "center" }}>{signUpError}</p>
+                                    ) : (null)
+                                }
+
+                                <div className="col-lg-12 login-form">
+                                    <div className="col-lg-12 login-form">
+                                        <form noValidate onSubmit={this.onSubmit}>
+                                            <div className="col-lg-12">
+                                                <div className="col-lg-6 form-group">
+                                                    <label className="form-control-label" htmlFor="firstName">FIRST NAME</label>
+                                                    <input type="text" className="form-control inputText firstName" id="firstName" onChange={this.onChange} value={firstName} />
+                                                    {/* <span className="red-text">{errors.firstName}</span> */}
+                                                </div>
+                                                <div className="col-lg-6 form-group" style={{ marginBottom: "20px" }}>
+                                                    <label className="form-control-label" htmlFor="lastName">LAST NAME</label>
+                                                    <input type="text" className="form-control inputText lastName" id="lastName" onChange={this.onChange} value={lastName} />
+                                                    {/* <span className="red-text">{errors.lastName}</span> */}
+                                                </div>
+                                            </div>
+
+                                            <div className="col-lg-12">
+                                                <div className="col-lg-6 form-group">
+                                                    <label className="form-control-label" htmlFor="email">EMAIL</label>
+                                                    <input type="email" className= "form-control inputEmail email" id="email" onChange={this.onChange} value={email} />
+                                                    {/* <span className="red-text">{errors.email}</span> */}
+                                                </div>
+                                                <div className="col-lg-6 form-group" style={{ marginBottom: "20px" }}>
+                                                    <label className="form-control-label" htmlFor="password">PASSWORD</label>
+                                                    <input type="password" className="form-control inputPassword password" id="password" onChange={this.onChange} value={password} />
+                                                    {/* <span className="red-text">{errors.password}</span> */}
+                                                </div>
+                                            </div>
+
+                                            <div className="col-lg-12">
+                                                <div className="col-lg-6 form-group">
+                                                    <label className="form-control-label" htmlFor="phoneNumber">PHONE NUMBER</label>
+                                                    <input type="tel" className="form-control inputTel phoneNumber" id="phoneNumber" onChange={this.onChange} value={phoneNumber} />
+                                                    {/* <span className="red-text">{errors.phoneNumber}</span> */}
+                                                </div>
+                                                <div className="col-lg-6 form-group" style={{ marginBottom: "20px" }}>
+                                                    <label className="form-control-label" htmlFor="age">AGE</label>
+                                                    <input type="text" className="form-control inputText age" id="age" onChange={this.onChange} value={age} />
+                                                    {/* <span className="red-text">{errors.age}</span> */}
+                                                </div>
+                                            </div>
+
+                                            <div className="col-lg-12">
+                                                <div id="signupClick" style={{ color: "honeydew", fontSize: "14px" }}>Already Have An Account?
+                                                    <Link to="/Login" > Click To Login</Link>
+                                                </div>
+                                            </div>
+
+                                            <div className="col-lg-12 loginbttm">
+                                                <div className="col-lg-6 login-btm login-text">
+                                                    {/* Error Message  */}
+                                                </div>
+                                                <div className="col-lg-12 login-btm login-button">
+                                                    <button type="submit" className=" btn btn-outline-primary">SIGN UP</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div className="col-lg-3 col-md-2"></div>
+                            </div>
                         </div>
-                    </div>
-                </SlideDown>
-            </div>
-        )
+                    </SlideDown>
+                </div>
+            )
+        // }
     }
 }
 
@@ -163,5 +262,5 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect( mapStateToProps, { registerUser } )(withRouter(SignUp));
+export default connect(mapStateToProps, { registerUser })(withRouter(SignUp));
 // export default SignUp;

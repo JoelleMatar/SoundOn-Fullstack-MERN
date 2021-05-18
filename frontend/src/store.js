@@ -8,6 +8,7 @@ import combineReducers from "./reducers";
 //   ? JSON.parse(localStorage.getItem('cartItems'))
 //   : [];
 
+
   const cartFromLocalStorage = localStorage.getItem("cart")
   ?  JSON.parse(localStorage.getItem('cart'))
   : [];

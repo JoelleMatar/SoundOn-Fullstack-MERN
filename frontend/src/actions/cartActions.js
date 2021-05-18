@@ -34,5 +34,5 @@ export const resetCart = () => (dispatch, getState) => {
         payload: {},
     })
 
-    localStorage.clear();
+    localStorage.clear("cart");
 };
