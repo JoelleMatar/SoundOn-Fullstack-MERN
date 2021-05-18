@@ -45,7 +45,7 @@ const CheckboxFilter = (props) => {
                 <div className="card-header" id="headingOne">
                     <h5 className="mb-0">
                         <button className="btn btn-link" id="collapsableBtn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <i className="fa fa-filter"></i>Click To Filter Items By Category and Price
+                            <i className="fa fa-filter"></i>Click To Filter Items By Category
                         </button>
                     </h5>
                 </div>

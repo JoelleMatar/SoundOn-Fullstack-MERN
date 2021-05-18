@@ -602,6 +602,10 @@ footer h3 {
   box-shadow: 0 0 0;
 }
 
+.login-form .form-control {
+  font-size: 15px;
+}
+
 .login-form, .signUp-form label {
   margin-bottom: 0px;
 }
@@ -1109,6 +1113,7 @@ footer h3 {
   margin-top: 100px;
   justify-content: center;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 .productsInfo h2 {
@@ -1326,6 +1331,10 @@ footer h3 {
 .cart-right div {
   border-bottom: 1px solid black;
   padding: 1rem;
+}
+
+.cart-right {
+  margin-top: 103px;
 }
 
 .cart-right div:last-child {

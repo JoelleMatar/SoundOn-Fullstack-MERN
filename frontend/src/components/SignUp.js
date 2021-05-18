@@ -127,7 +127,7 @@ class SignUp extends Component {
                 }
                 else {
                     this.setState({
-                        signUpError: "All Fields Should Be Filled",
+                        // signUpError: "All Fields Should Be Filled",
                         isLoading: false,
                     });
                 }

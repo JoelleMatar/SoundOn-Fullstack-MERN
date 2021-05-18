@@ -13,8 +13,8 @@ import combineReducers from "./reducers";
   ?  JSON.parse(localStorage.getItem('cart'))
   : [];
 
-const userInfoFromStorage = localStorage.getItem('user')
-? JSON.parse(localStorage.getItem('user'))
+const userInfoFromStorage = localStorage.getItem('token')
+? JSON.parse(localStorage.getItem('token'))
 : null;
 
 const initialState = {
